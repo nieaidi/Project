@@ -38,8 +38,11 @@
             width: 100px;
             background-color:darkgrey;
             margin-right: 5px;
-            display: none;
+
             border-bottom: 1px dashed #000000;
+        }
+        #menu .sub-menu ul{
+            display: none;
         }
         #menu .sub-menu a{
             text-align:left;
@@ -79,6 +82,31 @@
 
     </li>
 </ul>
+<script>
+    var oul=document.getElementById("menu");
+    var ali=oul.getElementsByTagName("li");
+//    alert(ali.length);
+    for(var i=0;i<ali.length;i++)
+    {
+        if(ali[i].className = "main-menu") {
+
+            ali[i].onmouseover = function(){
+                var oMainmenu = this.getElementsByTagName("ul")[0];
+               // var oul = this.getElementsByTagName("ul")[0];
+                //var oMainmenu=aul[0];
+                oMainmenu.style.display = "block";
+            };
+            ali[i].onmouseout = function(){
+                var oMainmenu = this.getElementsByTagName("ul")[0];
+                // var oul = this.getElementsByTagName("ul")[0];
+                //var oMainmenu=aul[0];
+                oMainmenu.style.display = "none";
+            }
+
+        }
+    }
+
+</script>
 
 </body>
 </html>
