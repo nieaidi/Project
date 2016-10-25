@@ -134,7 +134,7 @@
 //            this.parentNode.children[1].style.display="block";
 //        }
 //    }
-    //根据索引
+//    //根据索引
     var oUl=document.getElementById("menu")
     var aH3=oUl.getElementsByTagName("h3");
     var aUl=oUl.getElementsByTagName("ul")
@@ -152,14 +152,14 @@
 //            {
 //                aUl[this.index].style.display="none";
 //            }
-            //利用布尔型进行判断
-            if(this.bShow){
-                aUl[this.index].style.display="block";
+//            //利用布尔型进行判断
+           if(this.bShow){
+               aUl[this.index].style.display="block";
 
             }else{
                 aUl[this.index].style.display="none";
-            }
-            this.b=!this.b;
+           }
+           this.bShow=!this.bShow;
         }
     }
 </script>
