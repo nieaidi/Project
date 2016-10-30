@@ -68,6 +68,7 @@
     }
 
 </style>
+<script src="jslib.js"></script>
 <body>
 <div id="container">
 
@@ -118,7 +119,8 @@
             }
             aLi[index].className="selected";
 //            aImg[index].className="selected";
-            oContent.style.left=-aImg[0].offsetWidth* index+"px";
+            animate(oContent,{left:-aImg[0].offsetWidth * index});
+            //oContent.style.left=-aImg[0].offsetWidth* index+"px";
         }
         oNext.onclick=function(){
             iNow++;
