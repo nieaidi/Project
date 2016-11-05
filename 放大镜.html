@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>放大镜</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+       #div1{
+           width: 400px;
+           height: 400px;
+           position: relative;
+           float: left;
+       }
+        #drag{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            background-color: red;
+            opacity: 0.5;
+            filter: alpha(opacity=50);
+            display: none;
+        }
+        #div2{
+            width: 400px;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            float: left;
+            display: none;
+        }
+        #big-pic{
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+        #mask{
+            width:400px ;
+            height: 400px;
+            position: absolute;
+            background-color: red;
+            left: 0px;
+            top: 0px;
+            opacity: 0;
+            filter: alpha(opacity=100);
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+    <img src="image/1.jpg">
+    <div id="drag"></div>
+    <div id="mask"></div>
+</div>
+<div id="div2">
+    <img src="image/2.jpg" id="big-pic">
+</div>
+<script>
+    var oDiv1=document.getElementById("div1");
+    var oMask=document.getElementById("mask");
+    var oDrag=document.getElementById("drag");
+    var oDiv2=document.getElementById("div2");
+    var obigPic=document.getElementById("big-pic");
+    oMask.onmouseover=function(){
+
+        oDrag.style.display="block";
+        oDiv2.style.display="block";
+
+
+
+    };
+    oMask.onmousemove=function (e){
+        e=e||window.event;
+        oDrag.style.display="block";
+        oDiv2.style.display="block";
+
+        var left= e.clientX-oDrag.offsetWidth/2;
+        var top= e.clientY-oDrag.offsetHeight/2;
+        if(left <0){
+            left=0;
+        }
+        if(top <0){
+            top =0;
+        }
+        var leftMax=oDiv1.offsetWidth-oDrag.offsetWidth;
+        var topMax=oDiv1.offsetHeight-oDrag.offsetHeight;
+        if(left>leftMax){
+            left=leftMax;
+        }
+        if(top >topMax){
+            top =topMax;
+        }
+        oDrag.style.left=left +"px";
+        oDrag.style.top=top +"px";
+        var bX=left/leftMax;
+        var bY=top/topMax;
+        obigPic.style.left=-(obigPic.offsetWidth-oDiv2.offsetWidth) * bX +"px";
+        obigPic.style.top=-(obigPic.offsetHeight-oDiv2.offsetHeight) *bY + "px";
+        console.log(obigPic.style.left);
+        console.log(obigPic.style.top);
+    };
+    oMask.onmouseout=function(){
+        oDrag.style.display="none";
+        oDiv2.style.display="none";
+    }
+
+</script>
+</body>
+</html>
