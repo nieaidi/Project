@@ -60,11 +60,7 @@
             var iDisX= e.clientX-elem.offsetLeft;
             var iDisY= e.clientY- elem.offsetTop;
             elem.style.zIndex=zIndex++;
-//            elem.pos={
-//                left:elem.offsetLeft,
-//                top:elem.offsetTop
-//
-//            };
+
             document.onmousemove=function(e){
                 e=e || window.event;
                 elem.style.left= e.clientX-iDisX +"px";
