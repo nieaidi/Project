@@ -220,7 +220,10 @@
         aSmallImg[i].onclick=function(){
 //            iNow=this.index;
 //            changeImg(iNow);
-            changeImg(this.index);
+            if(this.index !=iNow){
+                changeImg(this.index);
+            }
+
 
         }
     }
